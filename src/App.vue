@@ -13,6 +13,7 @@ import Emulator from './Emulator.vue'
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
+    padding-top: 1rem;
 
     font-weight: normal;
 }
