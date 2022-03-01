@@ -8,13 +8,13 @@
                 <table class="registers">
                     <tr class="register-labels">
                         <td class="pc">PC</td>
-                        <td>X</td>
-                        <td>Y</td>
+                        <td class="x">X</td>
+                        <td class="y">Y</td>
                     </tr>
                     <tr class="register-values">
-                        <td class="pc">0x00</td>
-                        <td>0x00</td>
-                        <td>0x00</td>
+                        <td class="pc">0x0000</td>
+                        <td class="x">0x00</td>
+                        <td class="y">0x00</td>
                     </tr>
                 </table>
                 <table class="registers">
@@ -70,22 +70,22 @@ export default {
 .registers {
     font-family: Fixedsys;
     font-size: 35px;
+    line-height:30px ;
+    color: #1f1f1f;
 }
 .register-labels {
     text-align: left;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
+    color:#393939;
 }
 .status-register-labels {
     text-align: center;
 }
-.register-values > td {
-    margin-top: 0px;
-    padding-top: 0px;
+.register-values {
+    border-collapse: collapse;
 }
 
 .registers-container {
-    padding-left: 1px;
+    padding-left: 10px;
     float: right;
     width: 100px;
     display: inline;
@@ -98,7 +98,20 @@ export default {
     /* display: inline; */
     float: left;
 }
+/* td, table{ */
+    /* border: 2px solid black; */
+    /* border-collapse: collapse; */
+/* } */
 
 .pc {
+    color: #ff3a42;
+}
+
+.x{
+    color: #00ff44;
+}
+
+.y{
+     color: #002dff;
 }
 </style>
