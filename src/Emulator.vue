@@ -2,7 +2,17 @@
     <div>
         <div id="editor-and-registers">
             <div class="editor-container">
-                <textarea id="editor" cols="30" rows="10"></textarea>
+                <textarea id="editor" cols="30" rows="10"
+                spellcheck="false">
+LDY #$01
+LDA #$03
+STA $01
+LDA #$07
+STA $02
+LDX #$0a
+STX $0704
+LDA ($01),Y
+                </textarea>
             </div>
             <div class="registers-container">
                 <table class="registers">
@@ -63,6 +73,7 @@ export default {
     height: 300px;
     resize: none;
     font-size: 20px;
+    font-family: Fixedsys;
     /* float: left; */
     /* overflow: auto; */
 }
