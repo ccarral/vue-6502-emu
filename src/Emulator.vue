@@ -2,8 +2,7 @@
     <div>
         <div id="editor-and-registers">
             <div class="editor-container">
-                <textarea id="editor" cols="30" rows="10"
-                spellcheck="false">
+                <textarea id="editor" cols="30" rows="10" spellcheck="false">
 LDY #$01
 LDA #$03
 STA $01
@@ -16,15 +15,21 @@ LDA ($01),Y
             </div>
             <div class="registers-container">
                 <table class="registers">
-                    <tr class="register-labels">
-                        <td class="pc">PC</td>
-                        <td class="x">X</td>
-                        <td class="y">Y</td>
+                    <tr class>
+                        <td class="register-labels">PC</td>
+                        <td class="register-values">0x0000</td>
                     </tr>
-                    <tr class="register-values">
-                        <td class="pc">0x0000</td>
-                        <td class="x">0x00</td>
-                        <td class="y">0x00</td>
+                    <tr>
+                        <td class="register-labels">X</td>
+                        <td class="register-values">0xF3</td>
+                    </tr>
+                    <tr>
+                        <td class="register-labels">Y</td>
+                        <td class="register-values">0x00</td>
+                    </tr>
+                    <tr>
+                        <td class="register-labels">AC</td>
+                        <td class="register-values">0x00</td>
                     </tr>
                 </table>
                 <table class="registers">
@@ -49,8 +54,19 @@ LDA ($01),Y
                         <td>0</td>
                     </tr>
                 </table>
+                <table class="buttons-container">
+                    <tr>
+                        <td>
+                            <button class="buttons" id="run-button">Run</button>
+                        </td>
+                        <td>
+                            <button class="buttons" id>Reset</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
+        <div id="console">Compilation succesful.</div>
     </div>
 </template>
 <script>
@@ -68,61 +84,115 @@ export default {
     src: local("Fixedsys"), url(./fonts/FSEX302.ttf) format("truetype");
 }
 
+@font-face {
+    font-family: "Iosevka";
+    src: local("Fixedsys"),
+        url(./fonts/iosevka-term-ss18-regular.ttf) format("truetype");
+}
+
 #editor {
     width: 250px;
     height: 300px;
     resize: none;
     font-size: 20px;
-    font-family: Fixedsys;
-    /* float: left; */
-    /* overflow: auto; */
+    font-family: Iosevka;
 }
 
 .registers {
     font-family: Fixedsys;
     font-size: 35px;
-    line-height:30px ;
+    line-height: 30px;
     color: #1f1f1f;
 }
 .register-labels {
     text-align: left;
-    color:#393939;
 }
 .status-register-labels {
     text-align: center;
 }
 .register-values {
     border-collapse: collapse;
+    text-align: right;
+    color: #727272;
 }
 
 .registers-container {
     padding-left: 10px;
     float: right;
     width: 100px;
-    display: inline;
+    /* display: inline-block; */
 }
 .editor-container {
     /* float: left; */
     width: 250px;
     max-width: 250px;
     /* overflow: auto; */
-    /* display: inline; */
+    /* display: inline-block; */
     float: left;
 }
-/* td, table{ */
-    /* border: 2px solid black; */
-    /* border-collapse: collapse; */
-/* } */
-
 .pc {
     color: #ff3a42;
 }
-
-.x{
+.x {
     color: #00ff44;
 }
+.y {
+    color: #002dff;
+}
+.buttons {
+    border: 2px solid white;
+    text-decoration: none;
+    font-family: Iosevka;
+    font-size: 35px;
+}
 
-.y{
-     color: #002dff;
+#run-button:hover {
+    border: 2px solid black;
+}
+
+#run-button {
+    background-color: #ff353c;
+    color: white;
+}
+
+#console {
+    width: 100%;
+    height: 100px;
+    background-color: black;
+    font-size: 20px;
+    color: #00ff0c;
+    margin-top: 20px;
+    display: inline-block;
+    /* float: left; */
+    /* font-family: Fixedsys; */
+    font-family: Iosevka;
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.buttons-container {
+    padding-top: 20px;
 }
 </style>
