@@ -3,7 +3,9 @@ import Emulator from './Emulator.vue'
 </script>
 
 <template>
-    <Emulator></Emulator>
+    <div class="emulator-container">
+        <Emulator></Emulator>
+    </div>
 </template>
 
 <style>
@@ -13,8 +15,7 @@ import Emulator from './Emulator.vue'
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
-    padding-top: 1rem;
-
+    padding-top: 10rem;
     font-weight: normal;
 }
 
@@ -67,5 +68,9 @@ a,
     .logo {
         margin: 0 2rem 0 0;
     }
+}
+
+.emulator-container {
+    padding-top: 40px;
 }
 </style>

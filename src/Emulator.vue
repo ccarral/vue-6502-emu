@@ -20,6 +20,10 @@ LDA ($01),Y
                         <td class="register-values">0x0000</td>
                     </tr>
                     <tr>
+                        <td class="register-labels">SP</td>
+                        <td class="register-values">0x0000</td>
+                    </tr>
+                    <tr>
                         <td class="register-labels">X</td>
                         <td class="register-values">0xF3</td>
                     </tr>
@@ -67,13 +71,42 @@ LDA ($01),Y
             </div>
         </div>
         <div id="console">Compilation succesful.</div>
+        <div class="memory-container">
+            <table id="memory">
+                <tr v-for="row in memory">
+                    <td
+                        v-for="(cell, index) in row"
+                        :class="[index ==
+                        0 ? rowIndexClass : 'dataCell']"
+                    >
+                        {{
+                            cell.toString(16).padStart(2,
+                                '0').toUpperCase()
+                        }}
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </template>
 <script>
 
 export default {
     data() {
-        return {}
+        let filas = 16;
+        let columnas = 17;
+        let memory = new Array(filas);
+        for (let i = 0; i < filas; i++) {
+            memory[i] = new Array(columnas);
+            memory[i][0] = i * 0x10;
+            for (let j = 1; j < columnas; j++) {
+                memory[i][j] = i % j;
+            }
+        }
+        return {
+            memory,
+            rowIndexClass: 'mem-row-index'
+        }
     }
 }
 </script>
@@ -98,6 +131,10 @@ export default {
     font-family: Iosevka;
 }
 
+#editor-and-registers {
+    display: inline-block;
+}
+
 .registers {
     font-family: Fixedsys;
     font-size: 35px;
@@ -118,12 +155,11 @@ export default {
 
 .registers-container {
     padding-left: 10px;
-    float: right;
+    /* float: right; */
     width: 100px;
-    /* display: inline-block; */
+    display: inline-block;
 }
 .editor-container {
-    /* float: left; */
     width: 250px;
     max-width: 250px;
     /* overflow: auto; */
@@ -194,5 +230,30 @@ export default {
 
 .buttons-container {
     padding-top: 20px;
+}
+
+.memory-container {
+    padding-top: 10px;
+    font-family: Iosevka;
+    font-size: 25px;
+    color: #292929;
+}
+
+table#memory {
+    border-collapse: collapse;
+}
+
+table#memory > tr > td {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+}
+
+.mem-row-index {
+    background-color: #737373;
+}
+
+.dataCell {
+    background-color: #cfcfcf;
 }
 </style>
