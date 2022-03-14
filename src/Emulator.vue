@@ -2,15 +2,7 @@
     <div>
         <div id="editor-and-registers">
             <div class="editor-container">
-                <textarea id="editor" cols="30" rows="10" spellcheck="false">
-LDY #$01
-LDA #$03
-STA $01
-LDA #$07
-STA $02
-LDX #$0a
-STX $0704
-LDA ($01),Y
+                <textarea id="editor" cols="30" rows="10" spellcheck="false">{{ asm }}
                 </textarea>
             </div>
             <div class="registers-container">
@@ -100,6 +92,8 @@ LDA ($01),Y
 </template>
 <script>
 
+let asm = "LDY #$01\nLDA #$03\nSTA $01\nLDA #$07\nSTA $02\nLDX #$0a\nSTX $0704\nLDA($01), Y\n";
+
 export default {
     data() {
         let filas = 16;
@@ -116,6 +110,7 @@ export default {
             memory,
             rowIndexClass: 'mem-row-index',
             page: 0,
+            asm
         }
     },
     computed: {
