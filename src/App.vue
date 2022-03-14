@@ -3,7 +3,7 @@ import Emulator from './Emulator.vue'
 </script>
 
 <template>
-    <div class="emulator-container">
+    <div id="app" class="emulator-container">
         <Emulator></Emulator>
     </div>
 </template>
@@ -14,8 +14,8 @@ import Emulator from './Emulator.vue'
 #app {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 2rem;
-    padding-top: 10rem;
+    /* padding: 2rem; */
+    padding-top: 2rem;
     font-weight: normal;
 }
 
@@ -47,11 +47,11 @@ a,
         place-items: center;
     }
 
-    #app {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        padding: 0 2rem;
-    }
+    /* #app { */
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    /* padding: 0 2rem; */
+    /* } */
 
     header {
         display: flex;
@@ -70,7 +70,7 @@ a,
     }
 }
 
-.emulator-container {
-    padding-top: 40px;
-}
+/* .emulator-container { */
+/* padding-top: 40px; */
+/* } */
 </style>
