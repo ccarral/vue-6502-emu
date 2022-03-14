@@ -71,6 +71,15 @@ LDA ($01),Y
             </div>
         </div>
         <div id="console">Compilation succesful.</div>
+        <div class="page-controller-container">
+            <div class="page-controller">
+                <button class="buttons" id="run-button" v-on:click="returnPages(16)">&lt&lt</button>
+                <button class="buttons" v-on:click="returnPages(1)">&lt</button>
+                <div>{{ this.formattedPage }}</div>
+                <button class="buttons" v-on:click="skipPages(1)">></button>
+                <button class="buttons" id="run-button" v-on:click="skipPages(16)">>></button>
+            </div>
+        </div>
         <div class="memory-container">
             <table id="memory">
                 <tr v-for="row in memory">
@@ -105,8 +114,28 @@ export default {
         }
         return {
             memory,
-            rowIndexClass: 'mem-row-index'
+            rowIndexClass: 'mem-row-index',
+            page: 0,
         }
+    },
+    computed: {
+        formattedPage() {
+            return "0x" + this.page.toString(16).padStart(2,
+                '0').toUpperCase()
+        }
+    },
+    methods: {
+        skipPages(num) {
+            if (this.page + num < 256) {
+                this.page += num;
+            }
+        },
+        returnPages(num) {
+            if (this.page - num > -1) {
+                this.page -= num;
+            }
+        }
+
     }
 }
 </script>
@@ -125,7 +154,7 @@ export default {
 
 #editor {
     width: 250px;
-    height: 300px;
+    height: 312px;
     resize: none;
     font-size: 20px;
     font-family: Iosevka;
@@ -191,6 +220,11 @@ export default {
     color: white;
 }
 
+.red-next-button {
+    background-color: #ff353c;
+    color: black;
+}
+
 #console {
     width: 100%;
     height: 100px;
@@ -199,8 +233,6 @@ export default {
     color: #00ff0c;
     margin-top: 20px;
     display: inline-block;
-    /* float: left; */
-    /* font-family: Fixedsys; */
     font-family: Iosevka;
 }
 
@@ -255,5 +287,29 @@ table#memory > tr > td {
 
 .dataCell {
     background-color: #cfcfcf;
+}
+
+.page-controller {
+    padding-top: 10px;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.page-controller > div {
+    display: inline-block;
+    border: 2px solid white;
+    color: black;
+    background-color: #e6e6e6;
+    text-decoration: none;
+    font-family: Iosevka;
+    font-size: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.page-controller-container {
+    text-align: center;
 }
 </style>
