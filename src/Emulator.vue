@@ -156,7 +156,7 @@ export default {
 }
 
 #editor-and-registers {
-    display: inline-block;
+    margin: 0 auto;
 }
 
 .registers {
@@ -179,15 +179,12 @@ export default {
 
 .registers-container {
     padding-left: 10px;
-    /* float: right; */
     width: 100px;
     display: inline-block;
 }
 .editor-container {
     width: 250px;
     max-width: 250px;
-    /* overflow: auto; */
-    /* display: inline-block; */
     float: left;
 }
 .pc {
